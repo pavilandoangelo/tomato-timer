@@ -1,0 +1,14 @@
+.navbar {
+  padding: 1.5rem;
+  background-color: $background;
+}
+
+.navbar-light .navbar-brand {
+  color: $headline;
+  font-size: 2.5rem;
+}
+
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus {
+  color: #4dc430;
+}
