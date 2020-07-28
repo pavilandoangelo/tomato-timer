@@ -1,0 +1,21 @@
+#section {
+  background-color: $secondary;
+  text-align: center;
+}
+
+.btn-secondary {
+  &.active {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+}
+
+.timer {
+  font-size: 15rem;
+}
+
+.btn-controls {
+  border-radius: 0 !important;
+  font-size: 1.5rem;
+}

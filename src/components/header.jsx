@@ -1,5 +1,5 @@
-import React from "react"
-import { Row, Navbar, Container } from "react-bootstrap"
+import React from "react";
+import { Row, Navbar, Container } from "react-bootstrap";
 
 export default function Header() {
   return (
@@ -15,13 +15,7 @@ export default function Header() {
           />{" "}
           Tomato Timer
         </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
+  );
 }
