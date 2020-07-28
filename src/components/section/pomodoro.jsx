@@ -9,14 +9,6 @@ export default function Pomodoro(props) {
     started: false,
   });
 
-  // useEffect(() => {
-  //   setState()
-  //   const minutes = Math.floor(state.time / 60)
-  //   console.log("minutes >>> ", minutes)
-  //   const seconds = state.time % 60
-  //   console.log("seconds >>> ", seconds)
-  // }, [])
-
   const handleOnStart = () => {
     return setState(state => ({
       ...state,

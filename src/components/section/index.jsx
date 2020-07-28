@@ -1,16 +1,17 @@
-import React from "react"
-import { ButtonGroup, Button, Row, Col, Container } from "react-bootstrap"
-import { useState } from "react"
-import Pomodoro from "./pomodoro"
+import React from "react";
+import { ButtonGroup, Button, Row, Col, Container } from "react-bootstrap";
+import { useState } from "react";
+import Pomodoro from "./pomodoro";
+import ShortBreak from "./short-break";
 
 export default function SectionIndex(props) {
   const [state, setState] = useState({
     active: "pomodoro",
-  })
+  });
 
   const handleOnClick = e => {
-    return setState({ ...state, active: e.target.value })
-  }
+    return setState({ ...state, active: e.target.value });
+  };
 
   return (
     <Row className="p-5" id="section">
@@ -46,9 +47,10 @@ export default function SectionIndex(props) {
               </ButtonGroup>
             </Col>
           </Row>
-          <Pomodoro />
+          {state.active === "pomodoro" && <Pomodoro />}
+          {state.active === "short" && <ShortBreak />}
         </Container>
       </Col>
     </Row>
-  )
+  );
 }
