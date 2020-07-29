@@ -12,17 +12,23 @@ export default function Pomodoro(props) {
   });
 
   const handleOnStart = () => {
-    return setState(state => ({
-      ...state,
-      started: true,
-    }));
+    if (!state.started) {
+      return setState(state => ({
+        ...state,
+        started: true,
+      }));
+    }
+    return;
   };
 
   const handleOnStop = () => {
-    return setState(state => ({
-      ...state,
-      started: false,
-    }));
+    if (state.started) {
+      return setState(state => ({
+        ...state,
+        started: false,
+      }));
+    }
+    return;
   };
 
   const handleOnReset = () => {
@@ -37,8 +43,10 @@ export default function Pomodoro(props) {
   };
 
   const displayTime = () => {
-    const minutes = Math.floor(state.time / 60);
-    const seconds = state.time % 60;
+    let minutes = Math.floor(state.time / 60);
+    let seconds = state.time % 60;
+    minutes = minutes < 0 ? 0 : minutes;
+    seconds = seconds < 0 ? 0 : seconds;
     setState(state => ({ ...state, minutes: minutes, seconds: seconds }));
   };
 
@@ -59,9 +67,11 @@ export default function Pomodoro(props) {
   }, [state.playing, state.audio]);
 
   useEffect(() => {
+    let timer = null;
+
     if (state.started) {
       if (state.time > 0) {
-        setTimeout(
+        timer = setTimeout(
           () => setState(state => ({ ...state, time: state.time - 1 })),
           1000
         );
@@ -69,6 +79,10 @@ export default function Pomodoro(props) {
         setState(state => ({ ...state, playing: true }));
       }
       displayTime();
+    } else {
+      if (timer) {
+        clearTimeout(timer);
+      }
     }
   }, [state.time, state.started]);
 
@@ -90,7 +104,11 @@ export default function Pomodoro(props) {
             block
             className="btn-controls"
             style={{ textAlign: "center" }}
-            onClick={handleOnStart}
+            onClick={() => {
+              setTimeout(() => {
+                handleOnStart();
+              }, 500);
+            }}
           >
             Start
           </Button>
@@ -101,7 +119,11 @@ export default function Pomodoro(props) {
             size="lg"
             block
             className="btn-controls"
-            onClick={handleOnStop}
+            onClick={() => {
+              setTimeout(() => {
+                handleOnStop();
+              }, 500);
+            }}
           >
             Stop
           </Button>
