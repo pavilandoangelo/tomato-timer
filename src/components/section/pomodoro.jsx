@@ -3,11 +3,11 @@ import { Row, Col, Button } from "react-bootstrap";
 
 export default function Pomodoro(props) {
   const [state, setState] = useState({
-    time: 5, // 1500
+    time: 1500, // 1500
     minutes: 0,
     seconds: 0,
     started: false,
-    audio: {},
+    audio: null,
     playing: false,
   });
 
@@ -29,9 +29,9 @@ export default function Pomodoro(props) {
     return setState(state => ({
       ...state,
       started: false,
-      time: 5,
-      minutes: Math.floor(5 / 60),
-      seconds: 5 % 60,
+      time: 1500,
+      minutes: Math.floor(1500 / 60),
+      seconds: 1500 % 60,
       playing: false,
     }));
   };
@@ -43,24 +43,18 @@ export default function Pomodoro(props) {
   };
 
   useEffect(() => {
-    setState(state => ({ ...state, audio: new Audio("./sound.mp3") }));
     displayTime();
-    state.audio.addEventListener("ended", () =>
-      setState(state => ({ ...state, playing: false }))
-    );
-    return () => {
-      state.audio.removeEventListener("ended", () =>
-        setState(state => ({ ...state, playing: false }))
-      );
-    };
+    setState(state => ({ ...state, audio: new Audio("./sound.mp3") }));
   }, []);
 
   useEffect(() => {
-    if (state.playing) {
-      state.audio.play();
-    } else {
-      state.audio.pause();
-      state.audio.currentTime = 0;
+    if (state.audio) {
+      if (state.playing) {
+        state.audio.play();
+      } else {
+        state.audio.pause();
+        state.audio.currentTime = 0;
+      }
     }
   }, [state.playing, state.audio]);
 
