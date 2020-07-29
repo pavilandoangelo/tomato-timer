@@ -59,7 +59,7 @@ export default function Pomodoro(props) {
       <Row>
         <Col>
           <span className="timer">
-            {state.minutes} :{" "}
+            {state.minutes < 10 ? "0" + state.minutes : state.minutes} :{" "}
             {state.seconds < 10 ? "0" + state.seconds : state.seconds}
           </span>
         </Col>
