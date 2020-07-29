@@ -7,7 +7,7 @@ export default function Pomodoro(props) {
     minutes: 0,
     seconds: 0,
     started: false,
-    audio: new Audio("./sound.mp3"),
+    audio: {},
     playing: false,
   });
 
@@ -43,6 +43,7 @@ export default function Pomodoro(props) {
   };
 
   useEffect(() => {
+    setState(state => ({ ...state, audio: new Audio("./sound.mp3") }));
     displayTime();
     state.audio.addEventListener("ended", () =>
       setState(state => ({ ...state, playing: false }))
