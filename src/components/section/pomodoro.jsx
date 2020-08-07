@@ -4,7 +4,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 export default function Pomodoro(props) {
   const [state, setState] = useState({
-    time: 5, // 5
+    time: 1500, // 1500
     minutes: 0,
     seconds: 0,
     started: false,
@@ -56,9 +56,9 @@ export default function Pomodoro(props) {
     return setState(state => ({
       ...state,
       started: false,
-      time: 5,
-      minutes: Math.floor(5 / 60),
-      seconds: 5 % 60,
+      time: 1500,
+      minutes: Math.floor(1500 / 60),
+      seconds: 1500 % 60,
       playing: false,
     }));
   };
