@@ -1,0 +1,14 @@
+#footer {
+  background-color: $ternary;
+  text-align: center;
+
+  a {
+    color: black;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  p {
+    margin-bottom: 0.3rem;
+  }
+}

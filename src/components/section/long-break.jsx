@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { useHotkeys } from "react-hotkeys-hook";
 
-export default function Pomodoro(props) {
+export default function LongBreak(props) {
+  console.log("props >>> ", props);
   const [state, setState] = useState({
-    time: 5, // 5
+    time: 600, // 600
     minutes: 0,
     seconds: 0,
     started: false,
@@ -34,7 +35,7 @@ export default function Pomodoro(props) {
 
   const handleOnStart = () => {
     if (!state.started) {
-      setState(state => ({
+      return setState(state => ({
         ...state,
         started: true,
       }));
@@ -56,9 +57,9 @@ export default function Pomodoro(props) {
     return setState(state => ({
       ...state,
       started: false,
-      time: 5,
-      minutes: Math.floor(5 / 60),
-      seconds: 5 % 60,
+      time: 600,
+      minutes: Math.floor(600 / 60),
+      seconds: 600 % 60,
       playing: false,
     }));
   };

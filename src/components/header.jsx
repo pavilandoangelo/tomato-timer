@@ -3,7 +3,7 @@ import { Navbar, Container } from "react-bootstrap";
 
 export default function Header() {
   return (
-    <Navbar id="header">
+    <Navbar id="header" className="row">
       <Container>
         <Navbar.Brand href="/">
           <img
